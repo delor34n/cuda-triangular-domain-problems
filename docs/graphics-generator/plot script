@@ -1,0 +1,75 @@
+set grid
+set xlabel 'Size (N)'
+set ylabel 'Time (ms)'
+set xrange [128:16384]
+set yrange [0:25]
+set key left top
+set terminal pngcairo enhanced font 'Monaco,10'
+
+set output "time_vs_size_all.png"
+plot 'perf.dat' using 1:3 w lp lw 1 lc rgb "#B40404" title 'DP', \
+	 'perf.dat' using 1:5 w lp lw 1 lc rgb "#FE642E" title 'BB', \
+	 'perf.dat' using 1:7 w lp lw 1 lc rgb "#0040FF" title 'LTM', \
+	 'perf.dat' using 1:9 w lp lw 1 lc rgb "#B404AE" title 'FR', \
+	 'perf.dat' using 1:11 w lp lw 1 lc rgb "#04B404" title 'FRB'
+replot
+
+set output "time_vs_size_DP_BB.png"
+plot 'perf.dat' using 1:3 w lp lw 1 lc rgb "#B40404" title 'DP', \
+	 'perf.dat' using 1:5 w lp lw 1 lc rgb "#FE642E" title 'BB'
+replot
+
+set output "time_vs_size_DP_LTM.png"
+plot 'perf.dat' using 1:3 w lp lw 1 lc rgb "#B40404" title 'DP', \
+	 'perf.dat' using 1:7 w lp lw 1 lc rgb "#0040FF" title 'LTM'
+replot
+
+set output "time_vs_size_DP_FR.png"
+plot 'perf.dat' using 1:3 w lp lw 1 lc rgb "#B40404" title 'DP', \
+	 'perf.dat' using 1:9 w lp lw 1 lc rgb "#B404AE" title 'FR'
+replot
+
+set output "time_vs_size_DP_FRB.png"
+plot 'perf.dat' using 1:3 w lp lw 1 lc rgb "#B40404" title 'DP', \
+	 'perf.dat' using 1:11 w lp lw 1 lc rgb "#04B404" title 'FRB'
+replot
+
+set yrange [0:15]
+set output "time_vs_size_BB_LTM.png"
+plot 'perf.dat' using 1:5 w lp lw 1 lc rgb "#FE642E" title 'BB', \
+	 'perf.dat' using 1:7 w lp lw 1 lc rgb "#0040FF" title 'LTM'
+replot
+
+set output "time_vs_size_BB_FR.png"
+plot 'perf.dat' using 1:5 w lp lw 1 lc rgb "#FE642E" title 'BB', \
+	 'perf.dat' using 1:9 w lp lw 1 lc rgb "#B404AE" title 'FR'
+replot
+
+set output "time_vs_size_BB_FRB.png"
+plot 'perf.dat' using 1:5 w lp lw 1 lc rgb "#FE642E" title 'BB', \
+	 'perf.dat' using 1:11 w lp lw 1 lc rgb "#04B404" title 'FRB'
+replot
+
+set yrange [0:8]
+set output "time_vs_size_LTM_FR.png"
+plot 'perf.dat' using 1:7 w lp lw 1 lc rgb "#0040FF" title 'LTM', \
+	 'perf.dat' using 1:9 w lp lw 1 lc rgb "#B404AE" title 'FR'
+replot
+
+set output "time_vs_size_LTM_FRB.png"
+plot 'perf.dat' using 1:7 w lp lw 1 lc rgb "#0040FF" title 'LTM', \
+	 'perf.dat' using 1:11 w lp lw 1 lc rgb "#04B404" title 'FRB'
+replot
+
+set output "time_vs_size_FR_FRB.png"
+plot 'perf.dat' using 1:9 w lp lw 1 lc rgb "#B404AE" title 'FR', \
+	 'perf.dat' using 1:11 w lp lw 1 lc rgb "#04B404" title 'FRB'
+replot
+
+
+#plot 'perf.dat' using 1:3 w lps lt -1 lc rgb "#B40404" title 'DynamicParallelism', \
+#	 '' using 1:3:4 w yerror lc rgb "#B40404", \
+#	 'perf.dat' using 1:5 w lps lt -1 lc rgb "#04B404" title 'BB', \
+#	 '' using 1:5:6 w yerror lc rgb "#04B404"
+
+
